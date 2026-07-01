@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALI | Réseaux Sociaux</title>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
 *{
 margin:0;
 padding:0;
@@ -6,106 +18,197 @@ font-family:Arial,sans-serif;
 }
 
 body{
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-min-height:100vh;
-background:linear-gradient(-45deg,#000428,#004e92,#1f1c2c,#0f2027);
+background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#4ca1af);
 background-size:400% 400%;
-animation:bg 12s ease infinite;
-color:white;
+animation:fondAnime 10s ease infinite;
+overflow:hidden;
+transition:0.5s;
 }
 
-@keyframes bg{
+@keyframes fondAnime{
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
 100%{background-position:0% 50%;}
 }
 
+/* Particles */
+.particles{
+position:absolute;
+width:100%;
+height:100%;
+z-index:0;
+}
+
+.particles span{
+position:absolute;
+display:block;
+width:6px;
+height:6px;
+background:white;
+opacity:0.3;
+border-radius:50%;
+animation:move 10s linear infinite;
+}
+
+@keyframes move{
+0%{transform:translateY(0) translateX(0);}
+100%{transform:translateY(-100vh) translateX(50px);}
+}
+
 .container{
+position:relative;
+z-index:1;
 width:90%;
 max-width:420px;
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(20px);
-padding:30px;
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(18px);
+padding:25px;
 border-radius:25px;
 text-align:center;
-box-shadow:0 0 40px rgba(0,255,255,.25);
-animation:fadeIn 1.2s ease;
+box-shadow:0 0 30px rgba(0,0,0,0.5);
+animation:fadeIn 1s ease;
 }
 
 @keyframes fadeIn{
-from{
-opacity:0;
-transform:translateY(40px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
 }
 
 img{
-width:140px;
-height:140px;
+width:110px;
+height:110px;
 border-radius:50%;
-border:5px solid white;
-box-shadow:0 0 25px cyan;
-animation:photo 3s infinite;
-object-fit:cover;
+border:3px solid white;
+animation:photo 3s infinite ease-in-out;
 }
 
 @keyframes photo{
-0%,100%{transform:scale(1);}
+0%{transform:scale(1);}
 50%{transform:scale(1.08);}
+100%{transform:scale(1);}
 }
 
-h1{
-margin-top:15px;
-font-size:32px;
-letter-spacing:2px;
+h1,p{
+color:white;
 }
 
 p{
-margin:15px 0 25px;
-opacity:.9;
+margin-bottom:20px;
+opacity:0.85;
 }
 
+/* Buttons */
 a{
-display:block;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
 text-decoration:none;
 color:white;
-padding:16px;
-margin:14px 0;
-border-radius:18px;
-font-size:18px;
+padding:14px;
+margin:10px 0;
+border-radius:12px;
+font-size:16px;
 font-weight:bold;
-transition:.4s;
+transition:0.3s;
 }
 
 a:hover{
-transform:translateY(-5px) scale(1.05);
-box-shadow:0 0 20px white;
+transform:scale(1.06);
+box-shadow:0 0 18px rgba(255,255,255,0.5);
 }
 
-.facebook{background:#1877F2;box-shadow:0 0 18px #1877F2;}
-.whatsapp{background:#25D366;box-shadow:0 0 18px #25D366;}
-.telegram{background:#0088cc;box-shadow:0 0 18px #0088cc;}
-.youtube{background:#FF0000;box-shadow:0 0 18px #FF0000;}
-.tiktok{background:#000;box-shadow:0 0 18px cyan;}
-.twitter{background:#111;box-shadow:0 0 18px white;}
-.instagram{
-background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
-box-shadow:0 0 18px #d62976;
+.facebook{background:#1877F2;}
+.whatsapp{background:#25D366;}
+.telegram{background:#0088cc;}
+.youtube{background:#FF0000;}
+.tiktok{background:#000;}
+.twitter{background:#1DA1F2;}
+.instagram{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);}
+.snapchat{background:#FFFC00;color:black;}
+
+/* Toggle button */
+.toggle{
+position:absolute;
+top:15px;
+right:15px;
+background:white;
+border:none;
+padding:8px 12px;
+border-radius:20px;
+cursor:pointer;
+font-weight:bold;
 }
-.snapchat{
-background:#FFFC00;
-color:black;
-box-shadow:0 0 18px #FFFC00;
+
+/* Dark mode */
+.dark{
+background:#0b0f1a !important;
+}
+
+.dark .container{
+background:rgba(255,255,255,0.08);
 }
 
 footer{
-margin-top:25px;
-font-size:14px;
-opacity:.8;
+margin-top:15px;
+font-size:13px;
+color:white;
+opacity:0.8;
 }
+
+</style>
+</head>
+
+<body>
+
+<!-- Particules -->
+<div class="particles"></div>
+
+<div class="container">
+
+<button class="toggle" onclick="toggleDark()">🌙</button>
+
+<img src="ali.png" alt="profil">
+
+<h1>ALI</h1>
+<p>Mes réseaux sociaux 👋</p>
+
+<a class="facebook" href="#"><i class="fab fa-facebook"></i> Facebook</a>
+<a class="whatsapp" href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+<a class="telegram" href="#"><i class="fab fa-telegram"></i> Telegram</a>
+<a class="youtube" href="#"><i class="fab fa-youtube"></i> YouTube</a>
+<a class="tiktok" href="#"><i class="fab fa-tiktok"></i> TikTok</a>
+<a class="twitter" href="#"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
+<a class="instagram" href="#"><i class="fab fa-instagram"></i> Instagram</a>
+<a class="snapchat" href="#"><i class="fab fa-snapchat"></i> Snapchat</a>
+
+<footer>© 2026 ALI • Tous droits réservés</footer>
+
+</div>
+
+<script>
+
+/* Dark mode */
+function toggleDark(){
+document.body.classList.toggle("dark");
+}
+
+/* Particles generator */
+const particles = document.querySelector(".particles");
+
+for(let i=0;i<25;i++){
+let span = document.createElement("span");
+span.style.left = Math.random()*100 + "%";
+span.style.top = Math.random()*100 + "%";
+span.style.animationDuration = (5+Math.random()*10)+"s";
+particles.appendChild(span);
+}
+
+</script>
+
+</body>
+</html>
