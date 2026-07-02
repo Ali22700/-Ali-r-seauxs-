@@ -140,6 +140,42 @@ background:#d93025;
 transform:scale(1.05);
 }
 
+.newvideo{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+background:#FF0000;
+color:white;
+padding:15px;
+border-radius:12px;
+font-size:18px;
+font-weight:bold;
+text-decoration:none;
+transition:.3s;
+}
+
+.newvideo:hover{
+transform:scale(1.05);
+box-shadow:0 0 15px rgba(255,0,0,.6);
+}
+
+.badge{
+background:#FFD700;
+color:#000;
+padding:3px 8px;
+border-radius:20px;
+font-size:12px;
+font-weight:bold;
+animation:blink 1s infinite;
+}
+
+@keyframes blink{
+50%{
+opacity:.4;
+}
+}
+
 /* Toggle button */
 .toggle{
 position:absolute;
@@ -220,6 +256,11 @@ opacity:0.8;
 
 <a class="email" href="mailto:alimamansani854@gmail.com">
     <i class="fa-solid fa-envelope"></i> Gmail
+</a>
+
+<a class="newvideo" href="https://youtube.com/watch?v=TON_ID_VIDEO" target="_blank">
+    <i class="fa-brands fa-youtube"></i>
+    <span class="badge">NEW</span> Vidéo
 </a>
 
 <footer>© 2026 ALI • Tous droits réservés</footer>
