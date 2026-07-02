@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ALI | Réseaux Sociaux</title>
+<meta name="theme-color" content="#0f2027">
+<meta name="description" content="Retrouvez tous mes réseaux sociaux officiels.">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -65,7 +68,7 @@ z-index:1;
 width:90%;
 max-width:420px;
 background:rgba(255,255,255,0.12);
-backdrop-filter:blur(18px);
+backdrop-filter: blur(10px);
 padding:25px;
 border-radius:25px;
 text-align:center;
@@ -216,7 +219,7 @@ opacity:0.8;
 
 <button class="toggle" onclick="toggleDark()">🌙</button>
 
-<img src="file_00000000f53c71f4bad3a172c7272fb8.png" alt="profil">
+<img src="file_00000000f53c71f4bad3a172c7272fb8.png" alt="Mon profil" loading="eager">
 
 <h1>ALI</h1>
 <p>Mes réseaux sociaux 👋</p>
@@ -287,7 +290,7 @@ document.body.classList.toggle("dark");
 /* Particles generator */
 const particles = document.querySelector(".particles");
 
-for(let i=0;i<25;i++){
+for(let i=0;i<12;i++){
 let span = document.createElement("span");
 span.style.left = Math.random()*100 + "%";
 span.style.top = Math.random()*100 + "%";
