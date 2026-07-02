@@ -12,216 +12,221 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
 body{
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:flex-start;
-padding:30px 0;
-background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#4ca1af);
-background-size:400% 400%;
-animation:fondAnime 10s ease infinite;
-overflow-y:auto;
-overflow-x:hidden;
-scroll-behavior:smooth;
-transition:0.5s;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding:30px 0;
+    background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#4ca1af);
+    background-size:400% 400%;
+    animation:fondAnime 10s ease infinite;
+    overflow-y:auto;
+    overflow-x:hidden;
+    scroll-behavior:smooth;
+    transition:0.5s;
 }
 
 @keyframes fondAnime{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
 }
 
 /* Particles */
 .particles{
-position:absolute;
-width:100%;
-height:100%;
-z-index:0;
+    position:fixed; /* Changé en fixed pour éviter de casser le défilement */
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+    pointer-events:none;
 }
 
 .particles span{
-position:absolute;
-display:block;
-width:6px;
-height:6px;
-background:white;
-opacity:0.3;
-border-radius:50%;
-animation:move 10s linear infinite;
+    position:absolute;
+    display:block;
+    width:6px;
+    height:6px;
+    background:white;
+    opacity:0.3;
+    border-radius:50%;
+    animation:move 10s linear infinite;
 }
 
 @keyframes move{
-0%{transform:translateY(0) translateX(0);}
-100%{transform:translateY(-100vh) translateX(50px);}
+    0%{transform:translateY(100vh) translateX(0); opacity: 0;}
+    10%{opacity: 0.3;}
+    90%{opacity: 0.3;}
+    100%{transform:translateY(-10vh) translateX(50px); opacity: 0;}
 }
 
 .container{
-position:relative;
-z-index:1;
-width:90%;
-max-width:420px;
-background:rgba(255,255,255,0.12);
-backdrop-filter: blur(10px);
-padding:25px;
-border-radius:25px;
-text-align:center;
-box-shadow:0 0 30px rgba(0,0,0,0.5);
-animation:fadeIn 1s ease;
+    position:relative;
+    z-index:1;
+    width:90%;
+    max-width:420px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding:25px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 0 30px rgba(0,0,0,0.5);
+    animation:fadeIn 1s ease forwards;
 }
 
 @keyframes fadeIn{
-from{opacity:0; transform:translateY(20px);}
-to{opacity:1; transform:translateY(0);}
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
 }
 
-img{
-width:110px;
-height:110px;
-border-radius:50%;
-border:3px solid white;
-animation:photo 3s infinite ease-in-out;
+img.profile-img{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    border:3px solid white;
+    animation:photo 3s infinite ease-in-out;
+    object-fit: cover;
 }
 
 @keyframes photo{
-0%{transform:scale(1);}
-50%{transform:scale(1.08);}
-100%{transform:scale(1);}
+    0%{transform:scale(1);}
+    50%{transform:scale(1.06);}
+    100%{transform:scale(1);}
 }
 
-h1,p{
-color:white;
+h1, h2, p{
+    color:white;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin: 20px 0 10px 0;
 }
 
 p{
-margin-bottom:20px;
-opacity:0.85;
+    margin-bottom:20px;
+    opacity:0.85;
+}
+
+video {
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 /* Buttons */
-a{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:10px;
-text-decoration:none;
-color:white;
-padding:14px;
-margin:10px 0;
-border-radius:12px;
-font-size:16px;
-font-weight:bold;
-transition:0.3s;
+.btn-link{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    text-decoration:none;
+    color:white;
+    padding:14px;
+    margin:10px 0;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:bold;
+    transition:0.3s;
+    animation:slideUp 0.6s ease forwards;
+    opacity:0;
 }
 
-a:hover{
-transform:scale(1.06);
-box-shadow:0 0 18px rgba(255,255,255,0.5);
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.btn-link:hover{
+    transform:scale(1.04) !important;
+    box-shadow:0 0 18px rgba(255,255,255,0.4);
 }
 
 .facebook{background:#1877F2;}
 .whatsapp{background:#25D366;}
 .telegram{background:#0088cc;}
 .youtube{background:#FF0000;}
-.tiktok{background:#000;}
+.tiktok{background:#000; border: 1px solid rgba(255,255,255,0.2);}
 .twitter{background:#1DA1F2;}
 .instagram{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);}
 .snapchat{background:#FFFC00;color:black;}
-.email{
-background:#EA4335;
-color:white;
-}
+.email{background:#EA4335;}
 
-.email:hover{
-background:#d93025;
-transform:scale(1.05);
-}
 .newvideo{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:10px;
-background:#FF0000;
-color:white;
-padding:15px;
-border-radius:12px;
-font-size:18px;
-font-weight:bold;
-text-decoration:none;
-transition:.3s;
+    background:#FF0000;
+    font-size:18px;
 }
 
 .newvideo:hover{
-transform:scale(1.05);
-box-shadow:0 0 15px rgba(255,0,0,.6);
+    box-shadow:0 0 15px rgba(255,0,0,.6);
 }
 
 .badge{
-background:#FFD700;
-color:#000;
-padding:3px 8px;
-border-radius:20px;
-font-size:12px;
-font-weight:bold;
-animation:blink 1s infinite;
+    background:#FFD700;
+    color:#000;
+    padding:3px 8px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+    animation:blink 1s infinite;
 }
 
 @keyframes blink{
-50%{
-opacity:.4;
-}
+    50%{opacity:.4;}
 }
 
 /* Toggle button */
 .toggle{
-position:absolute;
-top:15px;
-right:15px;
-background:white;
-border:none;
-padding:8px 12px;
-border-radius:20px;
-cursor:pointer;
-font-weight:bold;
+    position:absolute;
+    top:15px;
+    right:15px;
+    background:white;
+    border:none;
+    padding:8px 12px;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:bold;
+    z-index: 10;
 }
 
 /* Dark mode */
 .dark{
-background:#0b0f1a !important;
+    background:#0b0f1a !important;
 }
 
 .dark .container{
-background:rgba(255,255,255,0.08);
+    background:rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 footer{
-margin-top:15px;
-font-size:13px;
-color:white;
-opacity:0.8;
-}
-a{
-animation:slideUp 0.8s ease forwards;
-opacity:0;
+    margin-top:20px;
+    font-size:13px;
+    color:white;
+    opacity:0.6;
 }
 
-a:nth-child(1){animation-delay:0.2s;}
-a:nth-child(2){animation-delay:0.4s;}
-a:nth-child(3){animation-delay:0.6s;}
-a:nth-child(4){animation-delay:0.8s;}
-a:nth-child(5){animation-delay:1s;}
-a:nth-child(6){animation-delay:1.2s;}
-a:nth-child(7){animation-delay:1.4s;}
-a:nth-child(8){animation-delay:1.6s;}
+/* Gestion des délais de l'animation d'apparition des boutons */
+.btn-link:nth-of-type(1){animation-delay:0.1s;}
+.btn-link:nth-of-type(2){animation-delay:0.2s;}
+.btn-link:nth-of-type(3){animation-delay:0.3s;}
+.btn-link:nth-of-type(4){animation-delay:0.4s;}
+.btn-link:nth-of-type(5){animation-delay:0.5s;}
+.btn-link:nth-of-type(6){animation-delay:0.6s;}
+.btn-link:nth-of-type(7){animation-delay:0.7s;}
+.btn-link:nth-of-type(8){animation-delay:0.8s;}
+.btn-link:nth-of-type(9){animation-delay:0.9s;}
+.btn-link:nth-of-type(10){animation-delay:1s;}
 
 </style>
 </head>
@@ -233,15 +238,15 @@ a:nth-child(8){animation-delay:1.6s;}
 
 <div class="container">
 
-<button class="toggle" onclick="toggleDark()">🌙</button>
+<button class="toggle" onclick="toggleDark()" aria-label="Changer de thème">🌙</button>
 
-<img src="file_00000000f53c71f4bad3a172c7272fb8.png" alt="Mon profil" loading="eager">
+<img src="file_00000000f53c71f4bad3a172c7272fb8.png" alt="Mon profil" loading="eager" class="profile-img">
 
 <h1>ALI</h1>
 <p>Mes réseaux sociaux 👋</p>
 
-<a class="facebook" href="https://www.facebook.com/share/1PPx4x72Qo/" target="_blank">
-<i class="fab fa-facebook"></i> Facebook
+<a class="btn-link facebook" href="https://www.facebook.com/share/1PPx4x72Qo/" target="_blank">
+    <i class="fab fa-facebook"></i> Facebook
 </a>
 
 <h2>🆕 NEW VIDÉO</h2>
@@ -251,45 +256,44 @@ a:nth-child(8){animation-delay:1.6s;}
     Votre navigateur ne supporte pas la vidéo.
 </video>
 
-<a class="whatsapp" href="https://wa.me/qr/5YAZ5YQ7MLDBN1" target="_blank">
-<i class="fab fa-whatsapp"></i> WhatsApp
+<a class="btn-link whatsapp" href="https://wa.me/qr/5YAZ5YQ7MLDBN1" target="_blank">
+    <i class="fab fa-whatsapp"></i> WhatsApp
 </a>
 
-<a class="telegram" href="https://t.me/Alitirick" target="_blank">
-<i class="fab fa-telegram"></i> Telegram
+<a class="btn-link telegram" href="https://t.me/Alitirick" target="_blank">
+    <i class="fab fa-telegram"></i> Telegram
 </a>
 
-<a class="youtube" href="https://youtube.com/@mamansaniali2?si=YrXoJLN0kcOtejfw" target="_blank">
-<i class="fab fa-youtube"></i> YouTube
+<a class="btn-link youtube" href="https://youtube.com/@mamansaniali2?si=YrXoJLN0kcOtejfw" target="_blank">
+    <i class="fab fa-youtube"></i> YouTube
 </a>
 
-<a class="tiktok" href="https://www.tiktok.com/@alilecomedien227?_r=1&_t=ZS-97ftz4NAGQe" target="_blank">
-<i class="fab fa-tiktok"></i> TikTok
+<a class="btn-link tiktok" href="https://www.tiktok.com/@alilecomedien227?_r=1&_t=ZS-97ftz4NAGQe" target="_blank">
+    <i class="fab fa-tiktok"></i> TikTok
 </a>
 
-<a class="twitter" href="https://x.com/MamanSaniAli" target="_blank">
-<i class="fab fa-x-twitter"></i> X (Twitter)
+<a class="btn-link twitter" href="https://x.com/MamanSaniAli" target="_blank">
+    <i class="fab fa-x-twitter"></i> X (Twitter)
 </a>
 
-<a class="instagram" href="https://www.instagram.com/mamansaniali2?igsh=N2V3ZmIxeHNyYWV6" target="_blank">
-<i class="fab fa-instagram"></i> Instagram
+<a class="btn-link instagram" href="https://www.instagram.com/mamansaniali2?igsh=N2V3ZmIxeHNyYWV6" target="_blank">
+    <i class="fab fa-instagram"></i> Instagram
 </a>
 
-<a class="snapchat" href="https://www.snapchat.com/add/amamansani24858?share_id=5xw6o4vo1K8&locale=fr-FR" target="_blank">
-<i class="fab fa-snapchat"></i> Snapchat
+<a class="btn-link snapchat" href="https://www.snapchat.com/add/amamansani24858?share_id=5xw6o4vo1K8&locale=fr-FR" target="_blank">
+    <i class="fab fa-snapchat"></i> Snapchat
 </a>
 
-<a class="email" href="mailto:alimamansani854@gmail.com">
+<a class="btn-link email" href="mailto:alimamansani854@gmail.com">
     <i class="fa-solid fa-envelope"></i> Gmail
 </a>
 
-<a class="newvideo" href="https://youtube.com/shorts/ZtwfvQGBXEM?si=w_jSXHmz75GkkX9T" target="_blank">
-    <i class="fa-brands fa-youtube"></i>
-    <span class="badge">NEW</span> Vidéo
+<a class="btn-link newvideo" href="https://youtube.com/shorts/ZtwfvQGBXEM?si=w_jSXHmz75GkkX9T" target="_blank">
+    <i class="fa-brands fa-youtube"></i> <span class="badge">NEW</span> Vidéo Short
 </a>
 
-<a class="newvideo" href="new-video.mp4" target="_blank">
-    🎥 NEW VIDÉO
+<a class="btn-link newvideo" href="new-video.mp4" target="_blank">
+    <i class="fa-solid fa-video"></i> Regarder la vidéo mp4
 </a>
 
 <footer>© 2026 ALI • Tous droits réservés</footer>
@@ -297,23 +301,27 @@ a:nth-child(8){animation-delay:1.6s;}
 </div>
 
 <script>
-
 /* Dark mode */
 function toggleDark(){
-document.body.classList.toggle("dark");
+    document.body.classList.toggle("dark");
+    const btn = document.querySelector('.toggle');
+    if(document.body.classList.contains("dark")) {
+        btn.textContent = "☀️";
+    } else {
+        btn.textContent = "🌙";
+    }
 }
 
 /* Particles generator */
 const particles = document.querySelector(".particles");
 
 for(let i=0;i<12;i++){
-let span = document.createElement("span");
-span.style.left = Math.random()*100 + "%";
-span.style.top = Math.random()*100 + "%";
-span.style.animationDuration = (5+Math.random()*10)+"s";
-particles.appendChild(span);
+    let span = document.createElement("span");
+    span.style.left = Math.random()*100 + "%";
+    span.style.top = Math.random()*100 + "%";
+    span.style.animationDuration = (5+Math.random()*10)+"s";
+    particles.appendChild(span);
 }
-
 </script>
 
 </body>
